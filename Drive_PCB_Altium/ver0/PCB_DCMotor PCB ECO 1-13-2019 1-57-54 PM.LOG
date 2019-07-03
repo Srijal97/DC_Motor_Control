@@ -1,0 +1,121 @@
+Added Component: Designator=HS1(Heatsink_25mm)
+Added Component: Designator=HS2(Heatsink_25mm)
+Added Component: Designator=HS3(Heatsink_25mm)
+Added Component: Designator=HS4(Heatsink_25mm)
+Added Component: Designator=HS5(Heatsink_25mm)
+Added Component: Designator=T1(TP)
+Added Component: Designator=T2(TP)
+Added Component: Designator=T3(TP)
+Added Component: Designator=T4(TP)
+Added Component: Designator=T5(TP)
+Added Component: Designator=T6(TP)
+Added Component: Designator=T7(TP)
+Added Component: Designator=T8(TP)
+Added Component: Designator=T9(TP)
+Added Component: Designator=T10(TP)
+Added Component: Designator=T11(TP)
+Added Component: Designator=T12(TP)
+Added Component: Designator=T13(TP)
+Added Component: Designator=T14(TP)
+Added Component: Designator=T15(TP)
+Added Component: Designator=T16(TP)
+Added Component: Designator=T17(TP)
+Added Component: Designator=T18(TP)
+Added Component: Designator=T19(TP)
+Added Component: Designator=T20(TP)
+Added Component: Designator=T21(TP)
+Added Component: Designator=T22(TP)
+Added Component: Designator=T23(TP)
+Added Component: Designator=T24(TP)
+Added Component: Designator=T25(TP)
+Added Component: Designator=T26(TP)
+Added Component: Designator=T27(TP)
+Added Component: Designator=T28(TP)
+Added Component: Designator=T29(TP)
+Added Component: Designator=T30(TP)
+Added Component: Designator=T31(TP)
+Added Component: Designator=T32(TP)
+Added Component: Designator=T33(TP)
+Added Component: Designator=T34(TP)
+Added Component: Designator=T35(TP)
+Added Component: Designator=T36(TP)
+Added Component: Designator=T37(TP)
+Added Pin To Net: NetName=VCC_3.3V Pin=T1-1
+Added Pin To Net: NetName=VCC_13.8V Pin=T2-1
+Added Pin To Net: NetName=VCC_5V Pin=T3-1
+Added Pin To Net: NetName=UC_BACK_EMF Pin=T4-1
+Added Pin To Net: NetName=NetH1_1 Pin=T5-1
+Added Pin To Net: NetName=NetD6_1 Pin=T6-1
+Added Pin To Net: NetName=NetD7_1 Pin=T7-1
+Added Pin To Net: NetName=NetC23_1 Pin=T8-1
+Added Pin To Net: NetName=NetC25_1 Pin=T9-1
+Added Pin To Net: NetName=NetD10_1 Pin=T10-1
+Added Pin To Net: NetName=NetD11_1 Pin=T11-1
+Added Pin To Net: NetName=NetR21_1 Pin=T12-1
+Added Pin To Net: NetName=NetR22_1 Pin=T13-1
+Added Pin To Net: NetName=NetR23_1 Pin=T14-1
+Added Pin To Net: NetName=NetR24_1 Pin=T15-1
+Added Pin To Net: NetName=NetC27_1 Pin=T16-1
+Added Pin To Net: NetName=UC_BUS_CURRENT Pin=T17-1
+Added Pin To Net: NetName=UC_FAULT_CURRENT Pin=T18-1
+Added Pin To Net: NetName=UC_POT_INPUT Pin=T19-1
+Added Pin To Net: NetName=UC_HALL_INPUT Pin=T20-1
+Added Pin To Net: NetName=UC_INTERNAL_TEMP Pin=T21-1
+Added Pin To Net: NetName=UC_INPUT_VOLTAGE Pin=T22-1
+Added Pin To Net: NetName=NetP1_9 Pin=T23-1
+Added Pin To Net: NetName=NetP1_8 Pin=T24-1
+Added Pin To Net: NetName=NetP1_7 Pin=T25-1
+Added Pin To Net: NetName=UC_PLC_ANALOG_INPUT Pin=T26-1
+Added Pin To Net: NetName=NetP1_3 Pin=T27-1
+Added Pin To Net: NetName=NetP1_4 Pin=T28-1
+Added Pin To Net: NetName=NetP1_5 Pin=T29-1
+Added Pin To Net: NetName=UC_TACHO_INPUT Pin=T30-1
+Added Pin To Net: NetName=UC_CAN_TXD Pin=T31-1
+Added Pin To Net: NetName=UC_CAN_RXD Pin=T32-1
+Added Pin To Net: NetName=UC_RXD Pin=T33-1
+Added Pin To Net: NetName=UC_COM_DIRECTION Pin=T34-1
+Added Pin To Net: NetName=UC_TXD Pin=T35-1
+Added Pin To Net: NetName=UC_HB_LED1 Pin=T36-1
+Added Pin To Net: NetName=NetR75_2 Pin=T37-1
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component HS1 Heatsink
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component HS2 Heatsink
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component HS3 Heatsink
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component HS4 Heatsink
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component HS5 Heatsink
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component T1 Through hole TestPoint
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component T2 Through hole TestPoint
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component T3 Through hole TestPoint
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component T4 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T5 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T6 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T7 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T8 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T9 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T10 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T11 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T12 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T13 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T14 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T15 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T16 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T17 Through hole TestPoint
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component T18 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T19 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T20 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T21 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T22 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T23 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T24 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T25 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T26 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T27 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T28 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T29 Through hole TestPoint
+Added Member To Class: ClassName=PG03_Analog_Digital_Inputs Member=Component T30 Through hole TestPoint
+Added Member To Class: ClassName=PG04_Communications Member=Component T31 Through hole TestPoint
+Added Member To Class: ClassName=PG04_Communications Member=Component T32 Through hole TestPoint
+Added Member To Class: ClassName=PG04_Communications Member=Component T33 Through hole TestPoint
+Added Member To Class: ClassName=PG04_Communications Member=Component T34 Through hole TestPoint
+Added Member To Class: ClassName=PG04_Communications Member=Component T35 Through hole TestPoint
+Added Member To Class: ClassName=PG05_DSP_Circuit Member=Component T36 Through hole TestPoint
+Added Member To Class: ClassName=PG05_DSP_Circuit Member=Component T37 Through hole TestPoint

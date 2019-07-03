@@ -1,0 +1,48 @@
+Removed Pin From Net: NetName=VCC_13.8V Pin=U12-1
+Removed Pin From Net: NetName=NetR75_2 Pin=U12-2
+Removed Pin From Net: NetName=GND Pin=U12-3
+Removed Pin From Net: NetName=NetR74_2 Pin=U12-4
+Removed Pin From Net: NetName=NetR74_2 Pin=U12-6
+Removed Member From Class: ClassName=PG05_DSP_Circuit Member=U12
+Change Component Designator: OldDesignator=X6 NewDesignator=X1
+Added Component: Designator=D16(DO-214(SMA))
+Added Component: Designator=D17(SOD-80)
+Added Component: Designator=HS1(Heatsink_25mm)
+Added Component: Designator=HS2(Heatsink_25mm)
+Added Component: Designator=HS3(Heatsink_25mm)
+Added Component: Designator=HS4(Heatsink_25mm)
+Added Component: Designator=HS5(Heatsink_25mm)
+Added Component: Designator=Q2(SOT23-3-Leads)
+Added Component: Designator=Q3(SOT23-3-Leads)
+Added Component: Designator=R78(SMD1206)
+Added Component: Designator=R79(SMD1206)
+Added Pin To Net: NetName=NetJ10_2 Pin=D16-1
+Added Pin To Net: NetName=VS_24V Pin=D16-2
+Added Pin To Net: NetName=NetR74_2 Pin=D17-1
+Added Pin To Net: NetName=NetR74_2 Pin=Q2-2
+Added Pin To Net: NetName=VCC_13.8V Pin=Q2-3
+Added Pin To Net: NetName=NetR75_2 Pin=Q3-1
+Added Pin To Net: NetName=GND Pin=Q3-2
+Added Pin To Net: NetName=VCC_13.8V Pin=R78-1
+Change Net Name : Old Net Name=NetJ10_2 New Net Name=NetD16_1
+Change Net Name : Old Net Name=NetR74_2 New Net Name=NetD17_1
+Change Net Name : Old Net Name=NetR75_2 New Net Name=NetQ3_1
+Added Pin To Net: NetName=NetD17_2 Pin=D17-2
+Added Pin To Net: NetName=NetD17_2 Pin=Q3-3
+Added Pin To Net: NetName=NetD17_2 Pin=R78-2
+Added Pin To Net: NetName=NetD17_2 Pin=R79-1
+Added Net: Name=NetD17_2
+Added Pin To Net: NetName=NetQ2_1 Pin=Q2-1
+Added Pin To Net: NetName=NetQ2_1 Pin=R79-2
+Added Net: Name=NetQ2_1
+Added Member To Class: ClassName=PG05_DSP_Circuit Member=Component D16 Diode SMA
+Added Member To Class: ClassName=PG05_DSP_Circuit Member=Component D17 1N4148
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component HS1 Heatsink
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component HS2 Heatsink
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component HS3 Heatsink
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component HS4 Heatsink
+Added Member To Class: ClassName=PG02_Full_Bridge Member=Component HS5 Heatsink
+Added Member To Class: ClassName=PG05_DSP_Circuit Member=Component Q2 SMD NPN BJT
+Added Member To Class: ClassName=PG05_DSP_Circuit Member=Component Q3 SMD NPN BJT
+Added Member To Class: ClassName=PG05_DSP_Circuit Member=Component R78 SMD 1206 1%
+Added Member To Class: ClassName=PG05_DSP_Circuit Member=Component R79 SMD 1206 1%

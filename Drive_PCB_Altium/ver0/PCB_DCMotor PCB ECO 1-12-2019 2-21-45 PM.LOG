@@ -1,0 +1,8 @@
+Added Component: Designator=X1(Screw)
+Added Component: Designator=X2(Screw)
+Added Component: Designator=X3(Screw)
+Added Component: Designator=X4(Screw)
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component X1 TP
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component X2 TP
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component X3 TP
+Added Member To Class: ClassName=PG01_Power_Supply Member=Component X4 TP

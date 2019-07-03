@@ -1,0 +1,22 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: PCB_DCMotor.PcbDoc   2/3/2019  3:12:58 PM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : PCB_DCMotor.TXT
+EIA File   : PCB_DCMotor.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        28mil (0.7112mm)         Round          164              50.19 Inch (1274.72 mm)
+T2        30mil (0.762mm)          Round          110              12.89 Inch (327.46 mm)
+T3        31mil (0.7874mm)         Round          22               14.42 Inch (366.16 mm)
+T4        35mil (0.889mm)          Round          38               20.64 Inch (524.25 mm)
+T5        39mil (0.9906mm)         Round          39               29.56 Inch (750.73 mm)
+T6        43mil (1.0922mm)         Round          6                1.79 Inch (45.54 mm)
+T7        47mil (1.1938mm)         Round          21               8.74 Inch (222.04 mm)
+T8        118mil (2.9972mm)        Round          5         NPTH   26.42 Inch (671.11 mm)
+---------------------------------------------------------------------------
+Totals                                            405              164.65 Inch (4182.00 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

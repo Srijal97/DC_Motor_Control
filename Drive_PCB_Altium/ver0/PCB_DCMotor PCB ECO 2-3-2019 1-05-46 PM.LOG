@@ -1,0 +1,11 @@
+Added Room: Name=PG01_Power_Supply
+Added Room: Name=PG02_Full_Bridge
+Added Room: Name=PG03_Analog_Digital_Inputs
+Added Room: Name=PG04_Communications
+Added Room: Name=PG05_DSP_Circuit
+Removed Pin From Net: NetName=NetM9_4 Pin=R76-1
+Added Pin To Net: NetName=NetD17_1 Pin=R76-1
+Removed Pin From Net: NetName=NetQ3_1 Pin=R77-1
+Added Pin To Net: NetName=UC_PWM_DB Pin=R77-1
+Removed Pin From Net: NetName=GND Pin=R77-2
+Added Pin To Net: NetName=VCC_3.3V Pin=R77-2
