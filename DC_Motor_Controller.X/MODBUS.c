@@ -389,8 +389,8 @@ void createTableForMODBUS (void)
     //
     i = 0;
     
-    memAddressROvars[i] = (uINT) ((uINT *)&motorRPM);    
-    sizeOfROVar[i]      = sizeof(motorRPM);
+    memAddressROvars[i] = (uINT) ((uINT *)&motorActualRPM);    
+    sizeOfROVar[i]      = sizeof(motorActualRPM);
     i++;      
     
     memAddressROvars[i] = (uINT) ((uINT *)&adcInputVoltage);    
@@ -428,8 +428,8 @@ void createTableForMODBUS (void)
     //
     i = 0;
     
-    memAddressRWvars[i] = (uINT) ((uINT *)&SetSpeed);    
-    sizeOfRWVar[i]      = sizeof(SetSpeed);
+    memAddressRWvars[i] = (uINT) ((uINT *)&motorSetRPM);    
+    sizeOfRWVar[i]      = sizeof(motorSetRPM);
     i++; 
     
     memAddressRWvars[i] = (uINT) ((uINT *)&Speed_Kp);    

@@ -16,8 +16,8 @@ extern "C" {
 #include "projMacros.h"
 #include "mcc_generated_files/pwm.h"
     
-extern uINT SetSpeed;
-extern uINT motorRPM;
+extern uINT motorSetRPM;
+extern uINT motorActualRPM;
 extern uINT Speed_Kp;
 extern uINT Speed_Ki;
 

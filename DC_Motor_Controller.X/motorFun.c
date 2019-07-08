@@ -111,33 +111,34 @@ inline void PWM_Override_Disable(PWM_GENERATOR genNum)
 //******************************************************************************
 // Speed PI Controller
 //******************************************************************************
-uINT PIcontroller_Speed (uINT Setpoint, uINT PV, uINT Kpd, uINT Kid)
+uINT PIcontroller_Speed (uINT setpoint, uINT processVariable, uINT Kp, uINT Ki)
 {
-    volatile sINT Ek  = 0;
+    volatile sINT error  = 0;
     
     volatile sINT P_Term  = 0;
     volatile sINT I_Term  = 0;
-    volatile sINT delPV   = 0;
     volatile uINT PID_out = 0;
+    volatile uINT elapsedTime = 1;
         
     static sINT Ck     = 0;
-    static uINT PVk_1  = 0;
+    static uINT cumulativeError  = 0;
     
-    Ek     = (sINT) (Setpoint - PV); 
-    SATURATE(Ek, MIN_PI_OUT, MAX_PI_OUT); 
+    error = (sINT) (setpoint - processVariable); 
+    SATURATE(error, MIN_PI_OUT, MAX_PI_OUT);  // between -2047 to 2048
+  
+    cumulativeError += error * elapsedTime; // Apply the History  
     
-    delPV  = (sINT) (PV - PVk_1);    
-    P_Term = (sINT) ((Kpd * (sLONG)delPV) >> 12);   // Kp = 4096  then Kpd = Kp/4096 
-    I_Term = (sINT) ((Kid * (sLONG)Ek   ) >> 16);   // Ki = 65535 then Kid = Ki/65535 
+    P_Term = (sINT) ((Kp * (sLONG)error) >> 12);   // Kp = 4096  then P_Term = Kp/4096 
+    I_Term = 0; //(sINT) ((Ki * (sLONG)cumulativeError) >> 12);   // Ki = 4096 then I_term = Ki/4096 
     
-    Ck = (sINT) (Ck - P_Term + I_Term);
+    Ck = (sINT) (P_Term + I_Term);
     SATURATE(Ck, MIN_PI_OUT, MAX_PI_OUT);    
     
-    PVk_1   = PV; // Apply the History   
+    
     
     PID_out = (uINT) (MAX_PI_OUT + Ck);
     
-    return PID_out;  // The return value will be -2048 to 2048
+    return PID_out;  // The return value will be 0 to 4095
 }
 //******************************************************************************
 

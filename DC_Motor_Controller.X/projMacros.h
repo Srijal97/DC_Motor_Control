@@ -50,7 +50,7 @@ extern "C" {
 #define CONTROL_TORQUE_MODE     (uCHAR)2    // Torque Control Mode
 #define CONTROL_MODE_SLIDING    (uCHAR)3    // Sliding Control Mode
 
-#define MAX_PI_OUT              (sINT)2048
+#define MAX_PI_OUT              (sINT)2047
 #define MIN_PI_OUT              (sINT)-2048
 #define MAX_PWM_COUNT           (uINT)2450
 #define MIN_PWM_COUNT           (uINT)50

@@ -29,8 +29,8 @@ extern uINT dcBusCurrent;
 extern uCHAR motorControlMode;
 extern uCHAR motorDirection;
 
-extern uINT SetSpeed;
-extern uINT motorRPM;
+extern uINT motorSetRPM;
+extern uINT motorActualRPM;
 extern uINT Speed_Kp;
 extern uINT Speed_Ki;
 

@@ -30,10 +30,10 @@ uINT adcPotInput        = 0;
 uCHAR motorControlMode = CONTROL_POT_MODE; 
 uCHAR motorDirection = MOTOR_DIR_FORWARD;
 
-uINT SetSpeed = 2000;
-uINT motorRPM = 0;
-uINT Speed_Kp = 1500;
-uINT Speed_Ki = 10;
+uINT motorSetRPM = 0;
+uINT motorActualRPM = 0;
+uINT Speed_Kp = 4095;//1500;
+uINT Speed_Ki = 10;//10;
 
 uINT dcBusCurrent = 0; 
 uINT Torque_Kp = 1200;
