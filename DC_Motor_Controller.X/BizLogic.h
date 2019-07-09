@@ -31,8 +31,8 @@ extern uCHAR motorDirection;
 
 extern uINT motorSetRPM;
 extern uINT motorActualRPM;
-extern uINT Speed_Kp;
-extern uINT Speed_Ki;
+extern uINT speed_Kp;
+extern uINT speed_Ki;
 
 
 extern uINT Torque_Kp;

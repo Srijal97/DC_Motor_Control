@@ -32,8 +32,8 @@ uCHAR motorDirection = MOTOR_DIR_FORWARD;
 
 uINT motorSetRPM = 0;
 uINT motorActualRPM = 0;
-uINT Speed_Kp = 4095;//1500;
-uINT Speed_Ki = 10;//10;
+uINT speed_Kp = 4000;//1500;
+uINT speed_Ki = 100;//10;
 
 uINT dcBusCurrent = 0; 
 uINT Torque_Kp = 1200;

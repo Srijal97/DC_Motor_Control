@@ -11,7 +11,7 @@ uINT lpfGain        = 10000;   // Approx. 0.16667 * 0xFFFF
 uINT cnt20msSample  = 0;
 uINT cnt50msSample  = 0;
 
-sINT speedPIout = 0;
+uINT speedPIout = 0;
 uINT currSetpoint = 0;
 sINT torquePIout = 0; 
 
@@ -30,10 +30,14 @@ void runMotorWithControl (void)
     {
         motorSetRPM = (uINT)(adcPotInput >> 2);  // range 0 to 4096/4
         
-        motorActualRPM = (uINT)(adcMotorVoltage >> 2) + 55;  
+        SATURATE(motorSetRPM, 200, 1024);
+        
+        //motorActualRPM = (uINT)(adcMotorVoltage >> 2) + 55;  
         // Derived from equation relating motor voltage and actual RPM (using tachometer)
         
-        speedPIout = PIcontroller_Speed (motorSetRPM, motorActualRPM, Speed_Kp, Speed_Ki);
+        motorActualRPM = (uINT)(adcMotorVoltage >> 1) - (uINT)(2*adcBusCurrent) + 130;
+        
+        speedPIout = PIcontroller_Speed (motorSetRPM, motorActualRPM, speed_Kp, speed_Ki);
         // value from 0 to 4095
         
         MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT) >> 12); 
@@ -48,7 +52,7 @@ void runMotorWithControl (void)
     if(motorControlMode == CONTROL_SPEED_MODE)
     {
         // Current Setpoint will vary from 0 to 4096
-        speedPIout   = PIcontroller_Speed (motorSetRPM, motorActualRPM, Speed_Kp, Speed_Ki);
+        speedPIout   = PIcontroller_Speed (motorSetRPM, motorActualRPM, speed_Kp, speed_Ki);
         
         currSetpoint = (uINT) (((uLONG)speedPIout * MAX_CUR_COUNT) >> 12); // range 0 to 4096 only        
         
@@ -91,7 +95,7 @@ void readAllAnalogVariables (void)
     adcInputVoltage = LPF(adcInpVoltage_raw, adcInputVoltage, lpfGain);
     
     // Convert ADC current count to real Value - Formula can be applied later
-    dcBusCurrent   = adcBusCurrent / 0.95; 
+    dcBusCurrent   = adcBusCurrent; 
     
     // 20ms Sampling
     if(++cnt20msSample > 199)

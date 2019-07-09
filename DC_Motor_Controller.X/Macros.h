@@ -11,10 +11,10 @@
 //***************************************************************************************
 typedef unsigned char		    uCHAR;
 typedef signed char			    sCHAR;
-typedef unsigned int 		    uINT;
-typedef signed int			    sINT;
+typedef unsigned int 		    uINT;   // 0 to 4095
+typedef signed int			    sINT;   // -2048 to 2047
 typedef unsigned short int      uINT16;
-typedef unsigned long int       uINT32;
+typedef unsigned long int       uINT32; 
 typedef unsigned long	    	uLONG;
 typedef signed long             sLONG;
 typedef float                   FLOAT;

@@ -432,12 +432,12 @@ void createTableForMODBUS (void)
     sizeOfRWVar[i]      = sizeof(motorSetRPM);
     i++; 
     
-    memAddressRWvars[i] = (uINT) ((uINT *)&Speed_Kp);    
-    sizeOfRWVar[i]      = sizeof(Speed_Kp);
+    memAddressRWvars[i] = (uINT) ((uINT *)&speed_Kp);    
+    sizeOfRWVar[i]      = sizeof(speed_Kp);
     i++; 
     
-    memAddressRWvars[i] = (uINT) ((uINT *)&Speed_Ki);    
-    sizeOfRWVar[i]      = sizeof(Speed_Ki);
+    memAddressRWvars[i] = (uINT) ((uINT *)&speed_Ki);    
+    sizeOfRWVar[i]      = sizeof(speed_Ki);
     i++; 
 
     memAddressRWvars[i] = (uINT) ((uINT *)&Torque_Kp);    
