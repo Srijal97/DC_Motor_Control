@@ -25,14 +25,16 @@ extern uINT adcInternalTemp;
 extern uINT adcTachoInput;
 extern uINT adcPotInput;
 extern uINT dcBusCurrent;
+extern uINT dcBusVoltage;
 
 extern uCHAR motorControlMode;
 extern uCHAR motorDirection;
 
 extern uINT motorSetRPM;
-extern uINT motorActualRPM;
-extern uINT speed_Kp;
-extern uINT speed_Ki;
+extern sINT motorActualRPM;
+extern uINT Eb;
+extern float speed_Kp;
+extern float speed_Ki;
 
 
 extern uINT Torque_Kp;

@@ -81,7 +81,8 @@ int main(void)
     
     TMR1_Start();   // Kernel Timer Start
     
-    
+    //int a = sizeof(uLONG);
+
     while (1)
     {
         

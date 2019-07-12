@@ -17,11 +17,13 @@ extern "C" {
 #include "mcc_generated_files/pwm.h"
     
 extern uINT motorSetRPM;
-extern uINT motorActualRPM;
-extern uINT speed_Kp;
-extern uINT speed_Ki;
+extern sINT motorActualRPM;
+extern uINT Eb;
+extern float speed_Kp;
+extern float speed_Ki;
 
 extern uINT dcBusCurrent;
+extern uINT dcBusVoltage;
 extern uINT Torque_Kp;
 extern uINT Torque_Ki;
 
@@ -33,7 +35,7 @@ inline  void PWM_Override_Enable (PWM_GENERATOR genNum, uINT invLegState);
 inline  void PWM_Override_Disable(PWM_GENERATOR genNum); 
 
 // PI Controllers
-uINT PIcontroller_Speed (uINT Setpoint, uINT PV, uINT Kpd, uINT Kid);
+uINT PIcontroller_Speed (uINT Setpoint, uINT PV, float Kpd, float Kid);
 uINT PIcontroller_Torque(uINT Setpoint, uINT PV, uINT Kpd, uINT Kid);
 
 

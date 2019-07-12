@@ -31,11 +31,13 @@ uCHAR motorControlMode = CONTROL_POT_MODE;
 uCHAR motorDirection = MOTOR_DIR_FORWARD;
 
 uINT motorSetRPM = 0;
-uINT motorActualRPM = 0;
-uINT speed_Kp = 4000;//1500;
-uINT speed_Ki = 100;//10;
+sINT motorActualRPM = 0;
+uINT Eb = 0;
+float speed_Kp = 0.8;//4000;
+float speed_Ki = 0.8;//100;
 
 uINT dcBusCurrent = 0; 
+uINT dcBusVoltage = 0; 
 uINT Torque_Kp = 1200;
 uINT Torque_Ki = 5;
 

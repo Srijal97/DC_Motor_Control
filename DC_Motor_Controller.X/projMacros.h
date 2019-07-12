@@ -52,7 +52,7 @@ extern "C" {
 #define CONTROL_POT_PID_MODE    (uCHAR)4    // Closed loop with POT to set RPM
 
 #define MAX_PI_OUT              (sINT)2047
-#define MIN_PI_OUT              (sINT)-2048
+#define MIN_PI_OUT              (sINT)-2047
 #define MAX_PWM_COUNT           (uINT)2450
 #define MIN_PWM_COUNT           (uINT)50
 

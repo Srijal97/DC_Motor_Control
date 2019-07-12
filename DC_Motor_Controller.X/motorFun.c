@@ -111,33 +111,31 @@ inline void PWM_Override_Disable(PWM_GENERATOR genNum)
 //******************************************************************************
 // Speed PI Controller
 //******************************************************************************
-uINT PIcontroller_Speed (uINT setpoint, uINT processVariable, uINT Kp, uINT Ki)
+uINT PIcontroller_Speed (uINT setpoint, uINT processVariable, float Kp, float Ki)
 {
     
-    volatile sINT error  = 0;
+    volatile float error  = 0;
     
-    volatile sLONG P_Term  = 0;
-    volatile sLONG I_Term  = 0;
+    volatile float P_Term  = 0;
+    volatile float I_Term  = 0;
+    
     volatile uINT PID_out = 0;
-    volatile uINT elapsedTime = 1;
+    volatile float elapsedTime = 0.001;
         
-    static sLONG Ck     = 0;
-    static sLONG cumulativeError  = 0;
+    static float cumulativeError  = 0;
     
-    error = (sINT) (setpoint - processVariable); 
+    error = (float)(sINT)(setpoint - processVariable); 
     SATURATE(error, MIN_PI_OUT, MAX_PI_OUT);  // between -2047 to 2048
   
-    cumulativeError += error * (sINT)elapsedTime; // Apply the History  
+    cumulativeError += error * elapsedTime; // Apply the History  
     
-    P_Term = (sLONG) ((Kp * (sLONG)error) >> 10);   
-    I_Term = (sLONG) ((Ki * (sLONG)cumulativeError) >> 12);   
+    P_Term = Kp * error;   
+    I_Term = Ki * cumulativeError;   
+
+    PID_out = (uINT)(float)(2047.0 + P_Term + I_Term);
     
-    Ck = (sLONG) (P_Term + I_Term);
-    SATURATE(Ck, MIN_PI_OUT, MAX_PI_OUT);    
+    SATURATE(PID_out, 0, 4095); 
     
-    
-    PID_out = (uINT) (MAX_PI_OUT + Ck);
-   
     return PID_out;  // The return value will be 0 to 4095
 }
 //******************************************************************************
