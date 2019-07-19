@@ -5,19 +5,19 @@
         <group>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/BizLogic.h</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/BizLogic.c</file>
-            <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/globals.h</file>
-            <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/projMacros.h</file>
+            <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/nbproject/Makefile-default.mk</file>
+            <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/nbproject/Makefile-impl.mk</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/mcc_generated_files/tmr2.c</file>
-            <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/Macros.h</file>
+            <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/mcc_generated_files/system.h</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/mcc_generated_files/tmr1.c</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/mcc_generated_files/mcc.c</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/mcc_generated_files/system.c</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/mcc_generated_files/reset.c</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/MODBUS.c</file>
-            <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/Tasks.c</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/motorFun.h</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/main.c</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/mcc_generated_files/pwm.h</file>
+            <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/myPID.h</file>
             <file>file:/C:/Users/YSRAO/Documents/MPLABX/DC_Motor_Controller.X/motorFun.c</file>
         </group>
     </open-files>

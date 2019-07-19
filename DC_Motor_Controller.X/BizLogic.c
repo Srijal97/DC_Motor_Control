@@ -30,7 +30,7 @@ void runMotorWithControl (void)
     { 
         
         
-        SATURATE(adcPotInput, 0, 3500);  // 3000 ---> Eb = 15V
+        SATURATE(adcPotInput, 300, 3800);  // 3000 ---> Eb = 15V
         
         if(((float)dcBusVoltage - (float)dcBusCurrent*0.6) > 0.0f) {
             Eb = (uINT)((float)dcBusVoltage - (float)dcBusCurrent*0.6);
@@ -71,9 +71,9 @@ void runMotorWithControl (void)
         SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
 */
         //------------------------------------------------------------//
-        //MotorPWMDuty = (uINT) (adcPotInput >> 1);
+        // MotorPWMDuty = (uINT) (adcPotInput >> 1);
                 
-       // SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
+        // SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
     }
     
     if(motorControlMode == CONTROL_SPEED_MODE)

@@ -142,50 +142,45 @@ uINT PIcontroller_Speed (double setpoint, double processVariable, double Kp, dou
     
     
     static double lastInput = 0;
-    static double outputSum = 0;
+    static double cumulative_error = 0;
  
     double SampleTimeInSec = ((double)100)/1000;
 
     Ki = Ki * SampleTimeInSec;
     Kd = Kd / SampleTimeInSec;
-     input = processVariable;
-     Setpoint=setpoint;
+    input = processVariable;
+    Setpoint=setpoint;
+    
     double error = setpoint - input;
     double dInput = (input - lastInput);
+    double output = 0;
     
-    outputSum+= (Ki * error);
+    cumulative_error += error;
   
 
       /*Add Proportional on Measurement, if P_ON_M is specified*/
      // if(!pOnE) outputSum -= Kp * dInput;
 
-      if(outputSum > 4095) outputSum = 4095;
-      else if(outputSum < 0) outputSum = 0;
+    //if(cumulative_error > 4095) cumulative_error = 4095;
+    //else if(cumulative_error < 0) cumulative_error = 0;
 
       /*Add Proportional on Error, if P_ON_E is specified*/
-	   double output;
-      
-       output = Kp * error;
-    
+	
 
       /*Compute Rest of PID Output*/
-      output += outputSum - Kd * dInput;
+    output = (Kp * error) + (Ki * cumulative_error) - (Kd * dInput);
       
        /*Remember some variables for next time*/
-      lastInput = input;
+    lastInput = input;
 
-	    if(output > 4095) {
-            output = 4095;
-        }
-        else if(output < 0) { 
-            output = 0;
-        }
-	    return (uINT)output;
-
-     
+	if(output > 4095) {
+        output = 4095;
+    }
+    else if(output < 0) { 
+        output = 0;
+    }
     
-    
-    
+	return (uINT)output;
 }
 //******************************************************************************
 
