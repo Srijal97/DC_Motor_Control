@@ -10,6 +10,7 @@
 uCHAR cnt1ms  = 0;
 uCHAR cnt10ms = 0;
 uCHAR cnt25ms = 0;
+uCHAR cnt100ms = 0;
 
 
 //******************************************************************************
@@ -104,7 +105,7 @@ void Timer1msTask (void)
 void Timer10msTask (void)
 {
     //IO_RD5_HB_LED_Toggle();   
-    runMotorWithControl();
+    //runMotorWithControl();
 }
 //******************************************************************************
 
@@ -116,7 +117,13 @@ void Timer10msTask (void)
 //******************************************************************************
 void Timer25msTask (void)
 {
-   
+   //IO_RD5_HB_LED_Toggle();   
+    cnt100ms++;
+    if(cnt100ms == 4){
+        runMotorWithControl();
+        cnt100ms = 0;
+    }
+    
 }
 //******************************************************************************
 

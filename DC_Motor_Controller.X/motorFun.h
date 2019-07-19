@@ -19,8 +19,9 @@ extern "C" {
 extern uINT motorSetRPM;
 extern sINT motorActualRPM;
 extern uINT Eb;
-extern float speed_Kp;
-extern float speed_Ki;
+extern double speed_Kp;
+extern double speed_Ki;
+extern double speed_Kd;
 
 extern uINT dcBusCurrent;
 extern uINT dcBusVoltage;
@@ -35,7 +36,7 @@ inline  void PWM_Override_Enable (PWM_GENERATOR genNum, uINT invLegState);
 inline  void PWM_Override_Disable(PWM_GENERATOR genNum); 
 
 // PI Controllers
-uINT PIcontroller_Speed (uINT Setpoint, uINT PV, float Kpd, float Kid);
+uINT PIcontroller_Speed (double Setpoint, double PV, double Kp, double Ki, double Kd);
 uINT PIcontroller_Torque(uINT Setpoint, uINT PV, uINT Kpd, uINT Kid);
 
 

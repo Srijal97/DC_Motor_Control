@@ -5,7 +5,8 @@
 #include "motorFun.h"
 
 
-
+  double input;
+  double Setpoint;
 //******************************************************************************
 // runMotor 
 // Input - Direction and PWM Duty Count
@@ -111,9 +112,9 @@ inline void PWM_Override_Disable(PWM_GENERATOR genNum)
 //******************************************************************************
 // Speed PI Controller
 //******************************************************************************
-uINT PIcontroller_Speed (uINT setpoint, uINT processVariable, float Kp, float Ki)
+uINT PIcontroller_Speed (double setpoint, double processVariable, double Kp, double Ki, double Kd)
 {
-    
+    /*
     volatile float error  = 0;
     
     volatile float P_Term  = 0;
@@ -137,6 +138,54 @@ uINT PIcontroller_Speed (uINT setpoint, uINT processVariable, float Kp, float Ki
     SATURATE(PID_out, 0, 4095); 
     
     return PID_out;  // The return value will be 0 to 4095
+    */
+    
+    
+    static double lastInput = 0;
+    static double outputSum = 0;
+ 
+    double SampleTimeInSec = ((double)100)/1000;
+
+    Ki = Ki * SampleTimeInSec;
+    Kd = Kd / SampleTimeInSec;
+     input = processVariable;
+     Setpoint=setpoint;
+    double error = setpoint - input;
+    double dInput = (input - lastInput);
+    
+    outputSum+= (Ki * error);
+  
+
+      /*Add Proportional on Measurement, if P_ON_M is specified*/
+     // if(!pOnE) outputSum -= Kp * dInput;
+
+      if(outputSum > 4095) outputSum = 4095;
+      else if(outputSum < 0) outputSum = 0;
+
+      /*Add Proportional on Error, if P_ON_E is specified*/
+	   double output;
+      
+       output = Kp * error;
+    
+
+      /*Compute Rest of PID Output*/
+      output += outputSum - Kd * dInput;
+      
+       /*Remember some variables for next time*/
+      lastInput = input;
+
+	    if(output > 4095) {
+            output = 4095;
+        }
+        else if(output < 0) { 
+            output = 0;
+        }
+	    return (uINT)output;
+
+     
+    
+    
+    
 }
 //******************************************************************************
 

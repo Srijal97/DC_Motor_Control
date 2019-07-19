@@ -33,8 +33,9 @@ uCHAR motorDirection = MOTOR_DIR_FORWARD;
 uINT motorSetRPM = 0;
 sINT motorActualRPM = 0;
 uINT Eb = 0;
-float speed_Kp = 0.8;//4000;
-float speed_Ki = 0.8;//100;
+double speed_Kp = 0.7;//4000;
+double speed_Ki = 0.8;//100;
+double speed_Kd =0.0;
 
 uINT dcBusCurrent = 0; 
 uINT dcBusVoltage = 0; 

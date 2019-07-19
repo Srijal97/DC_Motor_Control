@@ -29,7 +29,8 @@ void runMotorWithControl (void)
     if(motorControlMode == CONTROL_POT_MODE)
     { 
         
-        SATURATE(adcPotInput, 300, 3000);  // 3000 ---> Eb = 15V
+        
+        SATURATE(adcPotInput, 0, 3500);  // 3000 ---> Eb = 15V
         
         if(((float)dcBusVoltage - (float)dcBusCurrent*0.6) > 0.0f) {
             Eb = (uINT)((float)dcBusVoltage - (float)dcBusCurrent*0.6);
@@ -41,12 +42,13 @@ void runMotorWithControl (void)
         
         SATURATE(Eb, 0, 4095);
         
-        speedPIout = PIcontroller_Speed (adcPotInput, Eb, speed_Kp, speed_Ki);
+        speedPIout =  PIcontroller_Speed ((double)adcPotInput, (double)Eb, speed_Kp, speed_Ki, speed_Kd);
         // value from 0 to 4095
         
-        MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT) >> 12); 
+        MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT)/4095); 
         
         SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT); 
+        
         
         //----------------------------------------------------------//
         /*
@@ -71,13 +73,13 @@ void runMotorWithControl (void)
         //------------------------------------------------------------//
         //MotorPWMDuty = (uINT) (adcPotInput >> 1);
                 
-        //SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
+       // SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
     }
     
     if(motorControlMode == CONTROL_SPEED_MODE)
     {
         // Current Setpoint will vary from 0 to 4096
-        speedPIout   = PIcontroller_Speed (motorSetRPM, motorActualRPM, speed_Kp, speed_Ki);
+        speedPIout   = PIcontroller_Speed (motorSetRPM, motorActualRPM, speed_Kp, speed_Ki, speed_Kd);
         
         currSetpoint = (uINT) (((uLONG)speedPIout * MAX_CUR_COUNT) >> 12); // range 0 to 4096 only        
         
