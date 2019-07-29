@@ -63,6 +63,7 @@
 #include "reset.h"
 #include "spi2.h"
 
+
 #ifndef _XTAL_FREQ
 #define _XTAL_FREQ  70041600UL
 #endif

@@ -59,6 +59,7 @@
 #include "BizLogic.h"
 #include "CANProtocol.h"
 #include "MODBUS.h"
+#include "encoder.h"
 
 
 /*
@@ -70,6 +71,7 @@ int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
+    QEI_initialize();
     PWM_ModuleEnable();
     
     PWM_DutyCycleSet(PWM_GENERATOR_1, 0);

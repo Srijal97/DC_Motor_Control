@@ -12,4 +12,5 @@ globals.h  \
 Tasks.h  \
 BizLogic.h  \
 CANProtocol.h  \
- MODBUS.h 
+ MODBUS.h  \
+encoder.h 

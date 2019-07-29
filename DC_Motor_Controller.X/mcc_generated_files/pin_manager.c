@@ -129,6 +129,9 @@ void PIN_MANAGER_Initialize (void)
 
     RPOR5bits.RP55R = 0x0001;    //RC7->UART1:U1TX
     RPINR18bits.U1RXR = 0x0038;    //RC8->UART1:U1RX
+    
+    RPINR14bits.QEA1R = 0x0077;  // RG7/RPI119 -> QEI1A
+    RPINR14bits.QEB1R = 0x0078;  // RG8/RP120 -> QEI1B
 
     __builtin_write_OSCCONL(OSCCON | 0x40); // lock PPS
 

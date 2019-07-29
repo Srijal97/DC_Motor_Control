@@ -5,7 +5,8 @@
 #include "BizLogic.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/uart1.h"
-#include "motorFun.h" 
+#include "motorFun.h"
+#include "encoder.h" 
 
 uINT lpfGain        = 10000;   // 10000 = Approx. 0.16667 * 0xFFFF
 uINT cnt20msSample  = 0;
@@ -29,6 +30,18 @@ void runMotorWithControl (void)
     if(motorControlMode == CONTROL_POT_MODE)
     { 
         
+        uint16_t velocity = QEI_velocity_read() / 2;
+        
+        
+        if ( motorDirection == MOTOR_DIR_FORWARD && velocity != 0) {
+            velocity = (65535 - velocity) / 2;
+        }
+        else {
+            velocity = velocity / 2;
+        }
+          
+          
+        SATURATE(velocity, 0, 4095);
         
         SATURATE(adcPotInput, 300, 3800);  // 3000 ---> Eb = 15V
         
@@ -42,7 +55,7 @@ void runMotorWithControl (void)
         
         SATURATE(Eb, 0, 4095);
         
-        speedPIout =  PIcontroller_Speed ((double)adcPotInput, (double)Eb, speed_Kp, speed_Ki, speed_Kd);
+        speedPIout =  PIcontroller_Speed ((double)adcPotInput, (double)velocity, speed_Kp, speed_Ki, speed_Kd);
         // value from 0 to 4095
         
         MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT)/4095); 
@@ -73,7 +86,7 @@ void runMotorWithControl (void)
         //------------------------------------------------------------//
         // MotorPWMDuty = (uINT) (adcPotInput >> 1);
                 
-        // SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
+         //SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
     }
     
     if(motorControlMode == CONTROL_SPEED_MODE)
