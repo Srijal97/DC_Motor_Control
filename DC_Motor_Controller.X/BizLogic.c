@@ -29,9 +29,7 @@ void runMotorWithControl (void)
 {
     if(motorControlMode == CONTROL_POT_MODE)
     { 
-        
         uint16_t velocity = QEI_velocity_read() / 2;
-        
         
         if ( motorDirection == MOTOR_DIR_FORWARD && velocity != 0) {
             velocity = (65535 - velocity) / 2;
@@ -39,7 +37,6 @@ void runMotorWithControl (void)
         else {
             velocity = velocity / 2;
         }
-          
           
         SATURATE(velocity, 0, 4095);
         
@@ -52,7 +49,6 @@ void runMotorWithControl (void)
             Eb = 0;
         }
         
-        
         SATURATE(Eb, 0, 4095);
         
         speedPIout =  PIcontroller_Speed ((double)adcPotInput, (double)velocity, speed_Kp, speed_Ki, speed_Kd);
@@ -61,7 +57,6 @@ void runMotorWithControl (void)
         MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT)/4095); 
         
         SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT); 
-        
         
         //----------------------------------------------------------//
         /*
@@ -84,13 +79,13 @@ void runMotorWithControl (void)
         SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
 */
         //------------------------------------------------------------//
-        // MotorPWMDuty = (uINT) (adcPotInput >> 1);
+        //MotorPWMDuty = (uINT) (adcPotInput >> 1);
                 
-         //SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
+        //SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
     }
     
     if(motorControlMode == CONTROL_SPEED_MODE)
-    {
+    {  
         // Current Setpoint will vary from 0 to 4096
         speedPIout   = PIcontroller_Speed (motorSetRPM, motorActualRPM, speed_Kp, speed_Ki, speed_Kd);
         
