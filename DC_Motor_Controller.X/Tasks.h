@@ -15,9 +15,9 @@ extern "C" {
 #include "Macros.h"
 #include "projMacros.h"
     
- 
     
 extern uINT eventRegister;
+
     
 // Functions    
 void TimerCallBack          (void); 

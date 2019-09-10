@@ -120,6 +120,11 @@ void PIN_MANAGER_Initialize (void)
     ANSELB = 0x010E;
     ANSELC = 0x0007;
     ANSELE = 0xF000;
+    
+    // Setting the Pin Change Notification Interrupts
+    
+    CNENA = 0x1800;  // Enable pin change interrupt on RA11, RA12
+    CNENG = 0x0240;  // Enable pin change interrupt on RG6, RG9
 
 
     /****************************************************************************

@@ -33,15 +33,20 @@ extern uCHAR motorDirection;
 extern uINT motorSetRPM;
 extern sINT motorActualRPM;
 extern uINT Eb;
-extern double speed_Kp;
-extern double speed_Ki;
-extern double speed_Kd;
 
+//extern double speed_Kp;
+//extern double speed_Ki;
+//extern double speed_Kd;
 
-extern uINT Torque_Kp;
-extern uINT Torque_Ki;
+extern uINT speed_Kp;
+extern uINT speed_Ki;
+
+extern uINT torque_Kp;
+extern uINT torque_Ki;
 
 extern uINT MotorPWMDuty;
+
+extern uint16_t encoder_vel;
     
     
 // Functions

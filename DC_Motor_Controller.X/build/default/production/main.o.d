@@ -13,4 +13,5 @@ Tasks.h  \
 BizLogic.h  \
 CANProtocol.h  \
  MODBUS.h  \
-encoder.h 
+encoder.h  \
+ISRs.h 

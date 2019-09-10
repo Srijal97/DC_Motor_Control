@@ -27,20 +27,25 @@ uINT adcInternalTemp    = 0;
 uINT adcTachoInput      = 0;
 uINT adcPotInput        = 0;
 
-uCHAR motorControlMode = CONTROL_POT_MODE; 
+uCHAR motorControlMode = CONTROL_ENCODER_MODE; 
 uCHAR motorDirection = MOTOR_DIR_FORWARD;
 
 uINT motorSetRPM = 0;
 sINT motorActualRPM = 0;
 uINT Eb = 0;
-double speed_Kp = 1.3;//4000;
-double speed_Ki = 1;//100;
-double speed_Kd = 0.01;
+
+//double speed_Kp = 1.3;//4000;
+//double speed_Ki = 1;//100;
+//double speed_Kd = 0.01;
+
+uINT speed_Kp = 2000;
+uINT speed_Ki = 1000;
 
 uINT dcBusCurrent = 0; 
 uINT dcBusVoltage = 0; 
-uINT Torque_Kp = 1200;
-uINT Torque_Ki = 5;
+
+uINT torque_Kp = 2000;
+uINT torque_Ki = 500;
 
 uINT MotorPWMDuty = 0; 
 
@@ -48,6 +53,9 @@ uCHAR messageBuffer[MAX_TXRX_BUFF_LENGHT]; // 50 bytes
 uCHAR receiveByteLen = 50;
 uINT  modbusTimeoutCounter;
 uCHAR flagSlaveAdd = NO;
+
+uint16_t encoder_vel = 0;
+uINT ss_duty_count = 300;
 
 
 #ifdef	__cplusplus

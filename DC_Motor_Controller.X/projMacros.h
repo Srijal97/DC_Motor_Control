@@ -46,10 +46,9 @@ extern "C" {
 
 // Motor Function Macros    
 #define CONTROL_POT_MODE        (uCHAR)0    // Open loop POT control Mode
-#define CONTROL_SPEED_MODE      (uCHAR)1    // Speed Control Mode
-#define CONTROL_TORQUE_MODE     (uCHAR)2    // Torque Control Mode
-#define CONTROL_MODE_SLIDING    (uCHAR)3    // Sliding Control Mode
-#define CONTROL_POT_PID_MODE    (uCHAR)4    // Closed loop with POT to set RPM
+#define CONTROL_ENCODER_MODE    (uCHAR)1    // Speed Control Mode using Encoder
+#define CONTROL_BEMF_MODE       (uCHAR)2    // Speed Control Mode using BEMF
+#define CONTROL_TORQUE_MODE     (uCHAR)3    // Torque Control Mode
 
 #define MAX_PI_OUT              (sINT)2047
 #define MIN_PI_OUT              (sINT)-2047

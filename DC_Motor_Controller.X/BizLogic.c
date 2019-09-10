@@ -6,13 +6,16 @@
 #include "mcc_generated_files/pin_manager.h"
 #include "mcc_generated_files/uart1.h"
 #include "motorFun.h"
-#include "encoder.h" 
+#include "encoder.h"
+
+ 
 
 uINT lpfGain        = 10000;   // 10000 = Approx. 0.16667 * 0xFFFF
 uINT cnt20msSample  = 0;
 uINT cnt50msSample  = 0;
 
 uINT speedPIout = 0;
+uINT speedSetpoint = 4000;
 uINT currSetpoint = 0;
 sINT torquePIout = 0; 
 
@@ -27,19 +30,25 @@ uCHAR messageTx[50] = {0x00, 0xAA, 0x55};
 //******************************************************************************
 void runMotorWithControl (void)
 {
-    if(motorControlMode == CONTROL_POT_MODE)
-    { 
-        uint16_t velocity = QEI_velocity_read() / 2;
+    if(motorControlMode == CONTROL_POT_MODE) {
+        MotorPWMDuty = (uINT) (adcPotInput >> 1);
+                
+        SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
+    }
+    
+    if(motorControlMode == CONTROL_ENCODER_MODE) {
+        SATURATE(adcPotInput, 300, 3800);  // 3000 ---> Eb = 15V
         
-        if ( motorDirection == MOTOR_DIR_FORWARD && velocity != 0) {
-            velocity = (65535 - velocity) / 2;
-        }
-        else {
-            velocity = velocity / 2;
-        }
-          
-        SATURATE(velocity, 0, 4095);
+        speedPIout =  PI_speed_discrete (adcPotInput, encoder_vel, speed_Kp, speed_Ki);
+        // value from 0 to 4095
         
+        MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT)/4095); 
+        
+        SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT); 
+
+    }
+    
+    if(motorControlMode == CONTROL_BEMF_MODE) {
         SATURATE(adcPotInput, 300, 3800);  // 3000 ---> Eb = 15V
         
         if(((float)dcBusVoltage - (float)dcBusCurrent*0.6) > 0.0f) {
@@ -51,56 +60,38 @@ void runMotorWithControl (void)
         
         SATURATE(Eb, 0, 4095);
         
-        speedPIout =  PIcontroller_Speed ((double)adcPotInput, (double)velocity, speed_Kp, speed_Ki, speed_Kd);
+        speedPIout =  PI_speed_discrete (adcPotInput, Eb, speed_Kp, speed_Ki);
         // value from 0 to 4095
         
         MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT)/4095); 
         
         SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT); 
-        
-        //----------------------------------------------------------//
-        /*
-        motorSetRPM = (uINT)(adcPotInput >> 2);  // range 0 to 4096/4
-        
-        SATURATE(motorSetRPM, 200, 1024);
-        
-        //motorActualRPM = (uINT)(adcMotorVoltage >> 2) + 55;  
-        // Derived from equation relating motor voltage and actual RPM (using tachometer)
-        
-        motorActualRPM = (sINT)((uINT)(adcMotorVoltage >> 1) - (uINT32)(2*dcBusCurrent) + 130);
-        
-        SATURATE(motorActualRPM, 100, 1600);
-        
-        speedPIout = PIcontroller_Speed (motorSetRPM, (uINT)motorActualRPM, speed_Kp, speed_Ki);
-        // value from 0 to 4095
-        
-        MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT) >> 12); 
-        
-        SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
-*/
-        //------------------------------------------------------------//
-        //MotorPWMDuty = (uINT) (adcPotInput >> 1);
-                
-        //SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT);   
     }
     
-    if(motorControlMode == CONTROL_SPEED_MODE)
-    {  
-        // Current Setpoint will vary from 0 to 4096
-        speedPIout   = PIcontroller_Speed (motorSetRPM, motorActualRPM, speed_Kp, speed_Ki, speed_Kd);
+    if(motorControlMode == CONTROL_TORQUE_MODE) { 
+
+        SATURATE(adcPotInput, 100, 3800);  // 3000 ---> Eb = 15V
         
-        currSetpoint = (uINT) (((uLONG)speedPIout * MAX_CUR_COUNT) >> 12); // range 0 to 4096 only        
+        if(((float)dcBusVoltage - (float)dcBusCurrent*0.6) > 0.0f) {
+            Eb = (uINT)((float)dcBusVoltage - (float)dcBusCurrent*0.6);
+        }
+        else {
+            Eb = 0;
+        }
         
-        torquePIout  = PIcontroller_Torque ( currSetpoint, 
-                                             dcBusCurrent, 
-                                             Torque_Kp, 
-                                             Torque_Ki );  
+        SATURATE(Eb, 0, 4095);
+
+        speedPIout   = PI_speed_discrete(speedSetpoint, encoder_vel, speed_Kp, speed_Ki);
+        
+        currSetpoint = (uINT) (((uLONG)speedPIout * adcPotInput) >> 12); // range 0 to 4096 only        
+        
+        torquePIout  = PI_torque_discrete(currSetpoint, dcBusCurrent, torque_Kp, torque_Ki);  
           
         MotorPWMDuty = (uINT) (((uLONG)torquePIout * MAX_PWM_COUNT) >> 12); // range 0 to 2048 only 
         
         SATURATE(MotorPWMDuty, MIN_PWM_COUNT, MAX_PWM_COUNT); 
     }
-    
+
     // Send PWM Duty 
     runMotor(motorDirection, MotorPWMDuty);   //  
 }

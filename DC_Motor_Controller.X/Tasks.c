@@ -5,6 +5,7 @@
 #include "Tasks.h"
 #include "mcc_generated_files/pin_manager.h"
 #include "BizLogic.h"
+#include "motorFun.h"
 #include "MODBUS.h"
 
 uCHAR cnt1ms  = 0;
@@ -24,6 +25,8 @@ void TimerCallBack (void)
 
     // Read ADC is the 100us default Task
     readAllAnalogVariables();
+    
+    
     
     if(++cnt1ms > 9)
     {
@@ -92,7 +95,7 @@ void TimerCallBack (void)
 //******************************************************************************
 void Timer1msTask (void)
 {
-    
+    runMotorWithControl();
 }
 //******************************************************************************
 
@@ -105,7 +108,8 @@ void Timer1msTask (void)
 void Timer10msTask (void)
 {
     //IO_RD5_HB_LED_Toggle();   
-    //runMotorWithControl();
+   
+    
 }
 //******************************************************************************
 
@@ -120,7 +124,8 @@ void Timer25msTask (void)
    //IO_RD5_HB_LED_Toggle();   
     cnt100ms++;
     if(cnt100ms == 4){
-        runMotorWithControl();
+        read_encoder_velocity();
+        
         cnt100ms = 0;
     }
     

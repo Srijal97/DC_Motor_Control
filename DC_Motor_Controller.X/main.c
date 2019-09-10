@@ -60,6 +60,7 @@
 #include "CANProtocol.h"
 #include "MODBUS.h"
 #include "encoder.h"
+#include "ISRs.h"
 
 
 /*
@@ -83,38 +84,26 @@ int main(void)
     
     TMR1_Start();   // Kernel Timer Start
     
-    //int a = sizeof(uLONG);
+    enableInterrupts();
+    initInterrupts();
+    
+    if(IO_RG6_SW4_GetValue() == 0){  //If switch SW1 ON
+        IO_RD5_HB_LED_SetLow();
+        motorDirection = MOTOR_DIR_FORWARD;
+    }
+    else {
+        IO_RD5_HB_LED_SetHigh();
+        motorDirection = MOTOR_DIR_REVERSE;
+    }
+    
+    motorControlMode = (IO_RG9_SW1_GetValue() << 2) 
+                     + (IO_RA11_SW2_GetValue() << 1) 
+                     + (IO_RA12_SW3_GetValue());
 
     while (1)
     {
-        
-        if(IO_RG9_SW1_GetValue() == 0){  //If switch SW1 ON
-            IO_RD5_HB_LED_SetLow();
-            motorDirection = MOTOR_DIR_FORWARD;
-        }
-        else {
-            IO_RD5_HB_LED_SetHigh();
-            motorDirection = MOTOR_DIR_REVERSE;
-        }
-        
-        
         TMR1_Tasks_16BitOperation();    // 100uS Timer function
-        
-        // Add your application code
-        //IO_RD5_HB_LED_Toggle();
-        //IO_RC9_ETH_RST_Toggle();
-        //IO_RB0_ETH_CS_Toggle();
-        //IO_RA10_CAN_SI_Toggle();
-        //IO_RA4_RS485_DIR_Toggle();
-        //IO_RB11_DBU_PIN_Toggle();
-        
-        //if(IO_RA12_SW3_GetValue() == 0)
-            //IO_RD5_HB_LED_SetHigh();
-        //else
-            //IO_RD5_HB_LED_SetLow();   
-        
-        
-        //for(i=0; i<6000; i++);
+
     }
     return 1; 
 }
