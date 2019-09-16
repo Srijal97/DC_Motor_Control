@@ -39,7 +39,10 @@ void runMotorWithControl (void)
     if(motorControlMode == CONTROL_ENCODER_MODE) {
         SATURATE(adcPotInput, 100, 2000); 
         
-        speedPIout =  PI_speed_discrete (adcPotInput, encoder_vel, enc_speed_Kp, enc_speed_Ki);
+//        speedPIout =  PI_speed_discrete (adcPotInput, encoder_vel, enc_speed_Kp, enc_speed_Ki);
+//        // value from 0 to 4095
+//        
+        speedPIout =  PI_speed_cont ((double)adcPotInput, (double)encoder_vel, enc_speed_Kp, enc_speed_Ki);
         // value from 0 to 4095
         
         MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT)/4095); 
@@ -60,7 +63,10 @@ void runMotorWithControl (void)
         
         SATURATE(Eb, 0, 4095);
         
-        speedPIout =  PI_speed_discrete (adcPotInput, Eb, bemf_speed_Kp, bemf_speed_Ki);
+//        speedPIout =  PI_speed_discrete (adcPotInput, Eb, bemf_speed_Kp, bemf_speed_Ki);
+//        // value from 0 to 4095
+        
+        speedPIout =  PI_speed_cont ((double)adcPotInput, (double)Eb, bemf_speed_Kp, bemf_speed_Ki);
         // value from 0 to 4095
         
         MotorPWMDuty = (uINT) (((uLONG)speedPIout * MAX_PWM_COUNT)/4095); 

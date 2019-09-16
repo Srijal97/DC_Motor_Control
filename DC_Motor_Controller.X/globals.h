@@ -34,20 +34,20 @@ uINT motorSetRPM = 0;
 sINT motorActualRPM = 0;
 uINT Eb = 0;
 
-//double speed_Kp = 1.3;//4000;
-//double speed_Ki = 1;//100;
-//double speed_Kd = 0.01;
+double enc_speed_Kp = 1.3;//4000;
+double enc_speed_Ki = 0.1;//100;
 
-
+double bemf_speed_Kp = 1;//4000;
+double bemf_speed_Ki = 0.05;//100;
 
 uINT dcBusCurrent = 0; 
 uINT dcBusVoltage = 0; 
 
-uINT enc_speed_Kp = 4000;
-uINT enc_speed_Ki = 600;
+//uINT enc_speed_Kp = 4000;
+//uINT enc_speed_Ki = 600;
 
-uINT bemf_speed_Kp = 1500;
-uINT bemf_speed_Ki = 900;
+//uINT bemf_speed_Kp = 1500;
+//uINT bemf_speed_Ki = 900;
 
 uINT speed_Kp = 1100;
 uINT speed_Ki = 500;

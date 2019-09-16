@@ -180,3 +180,37 @@ uINT PI_speed_discrete(uINT setpoint, uINT PV, uINT Kpd, uINT Kid)
     
     return PID_out;  // The return value will be -2048 to 2048  
 }
+
+uINT PI_speed_cont(double setpoint, double processVariable, double Kp, double Ki)
+{
+    
+    static double lastInput = 0;
+    static double cumulative_error = 0;
+ 
+    double SampleTimeInSec = ((double)100)/1000;
+
+    Ki = Ki * SampleTimeInSec;
+    //Kd = Kd / SampleTimeInSec;
+
+    double error = setpoint - processVariable;
+    //double dInput = (processVariable - lastInput);
+    double output = 0;
+    
+    cumulative_error += error;
+ 
+
+      /*Compute Rest of PID Output*/
+    output = (Kp * error) + (Ki * cumulative_error);// - (Kd * dInput);
+      
+       /*Remember some variables for next time*/
+    lastInput = processVariable;
+
+	if(output > 4095) {
+        output = 4095;
+    }
+    else if(output < 0) { 
+        output = 0;
+    }
+    
+	return (uINT)output;
+}

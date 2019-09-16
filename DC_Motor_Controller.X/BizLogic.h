@@ -34,15 +34,18 @@ extern uINT motorSetRPM;
 extern sINT motorActualRPM;
 extern uINT Eb;
 
-//extern double speed_Kp;
-//extern double speed_Ki;
-//extern double speed_Kd;
+extern double enc_speed_Kp;
+extern double enc_speed_Ki;
+//extern double enc_speed_Kd;
 
-extern uINT enc_speed_Kp;
-extern uINT enc_speed_Ki;
+extern double bemf_speed_Kp;
+extern double bemf_speed_Ki;
 
-extern uINT bemf_speed_Kp;
-extern uINT bemf_speed_Ki;
+//extern uINT enc_speed_Kp;
+//extern uINT enc_speed_Ki;
+
+//extern uINT bemf_speed_Kp;
+//extern uINT bemf_speed_Ki;
 
 extern uINT speed_Kp;
 extern uINT speed_Ki;

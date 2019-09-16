@@ -22,15 +22,17 @@ extern uINT Eb;
 
 extern uCHAR motorDirection;
 
-//extern double speed_Kp;
-//extern double speed_Ki;
-//extern double speed_Kd;
+extern double enc_speed_Kp;
+extern double enc_speed_Ki;
 
-extern uINT enc_speed_Kp0;
-extern uINT enc_speed_Ki;
+extern double bemf_speed_Kp;
+extern double bemf_speed_Ki;
 
-extern uINT bemf_speed_Kp;
-extern uINT bemf_speed_Ki;
+//extern uINT enc_speed_Kp;
+//extern uINT enc_speed_Ki;
+
+//extern uINT bemf_speed_Kp;
+//extern uINT bemf_speed_Ki;
 
 extern uINT speed_Kp;
 extern uINT speed_Ki;
@@ -54,6 +56,8 @@ inline  void PWM_Override_Disable(PWM_GENERATOR genNum);
 // PI Controllers
 uINT PI_torque_discrete(uINT Setpoint, uINT PV, uINT Kpd, uINT Kid);
 uINT PI_speed_discrete(uINT Setpoint, uINT PV, uINT Kpd, uINT Kid);
+
+uINT PI_speed_cont(double setpoint, double processVariable, double Kp, double Ki);
 
 void read_encoder_velocity();
 
