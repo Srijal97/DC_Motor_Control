@@ -26,13 +26,21 @@ extern uCHAR motorDirection;
 //extern double speed_Ki;
 //extern double speed_Kd;
 
+extern uINT enc_speed_Kp0;
+extern uINT enc_speed_Ki;
+
+extern uINT bemf_speed_Kp;
+extern uINT bemf_speed_Ki;
+
 extern uINT speed_Kp;
 extern uINT speed_Ki;
 
-extern uINT dcBusCurrent;
-extern uINT dcBusVoltage;
 extern uINT torque_Kp;
 extern uINT torque_Ki;
+
+extern uINT dcBusCurrent;
+extern uINT dcBusVoltage;
+
 
 extern uINT MotorPWMDuty;
 

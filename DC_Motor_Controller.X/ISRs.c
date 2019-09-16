@@ -45,10 +45,12 @@ void __attribute__((__interrupt__,no_auto_psv)) _CNInterrupt(void)
     if(IO_RG6_SW4_GetValue() == 0){  //If switch SW1 ON
         IO_RD5_HB_LED_SetLow();
         motorDirection = MOTOR_DIR_FORWARD;
+        ss_duty_count = 0;
     }
     else {
         IO_RD5_HB_LED_SetHigh();
         motorDirection = MOTOR_DIR_REVERSE;
+        ss_duty_count = 0;
     }
     
     motorControlMode = (IO_RG9_SW1_GetValue() << 2) 

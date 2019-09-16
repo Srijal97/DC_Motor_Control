@@ -95,7 +95,10 @@ void TimerCallBack (void)
 //******************************************************************************
 void Timer1msTask (void)
 {
-    runMotorWithControl();
+    if(ss_duty_count == 600){
+        runMotorWithControl();
+    }
+    
 }
 //******************************************************************************
 
@@ -108,7 +111,10 @@ void Timer1msTask (void)
 void Timer10msTask (void)
 {
     //IO_RD5_HB_LED_Toggle();   
-   
+    if(ss_duty_count < 600) {
+        runMotor(motorDirection, ss_duty_count);
+        ss_duty_count += 2;
+    }
     
 }
 //******************************************************************************

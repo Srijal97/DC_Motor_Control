@@ -38,11 +38,19 @@ uINT Eb = 0;
 //double speed_Ki = 1;//100;
 //double speed_Kd = 0.01;
 
-uINT speed_Kp = 2000;
-uINT speed_Ki = 1000;
+
 
 uINT dcBusCurrent = 0; 
 uINT dcBusVoltage = 0; 
+
+uINT enc_speed_Kp = 4000;
+uINT enc_speed_Ki = 600;
+
+uINT bemf_speed_Kp = 1500;
+uINT bemf_speed_Ki = 900;
+
+uINT speed_Kp = 1100;
+uINT speed_Ki = 500;
 
 uINT torque_Kp = 2000;
 uINT torque_Ki = 500;
@@ -55,7 +63,8 @@ uINT  modbusTimeoutCounter;
 uCHAR flagSlaveAdd = NO;
 
 uint16_t encoder_vel = 0;
-uINT ss_duty_count = 300;
+
+uINT ss_duty_count = 0;
 
 
 #ifdef	__cplusplus

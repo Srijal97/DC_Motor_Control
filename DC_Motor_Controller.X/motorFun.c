@@ -26,7 +26,7 @@ void read_encoder_velocity() {
 void runMotor (uCHAR direction, uINT pwmDuty)
 {
     volatile uINT  invLegStatus  = 0x0000;    
-    static   uCHAR prevDirection = 1;
+    static   uCHAR prevDirection = 2;
     
     // if direction = FORWARD then Bridge A will be in complementary PWM while Bridge B
     // in Override Mode.  

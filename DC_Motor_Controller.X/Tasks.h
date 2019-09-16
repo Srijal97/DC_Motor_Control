@@ -17,6 +17,7 @@ extern "C" {
     
     
 extern uINT eventRegister;
+extern uINT ss_duty_count;
 
     
 // Functions    
